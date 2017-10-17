@@ -15,7 +15,7 @@ func requestHandler(w http.ResponseWriter, r *http.Request) {
 
 
 	w.Header().Set("Content-Type","text/html");// allows browser to render html tags
-http.
+
 	fmt.Fprintln(w, "Guessing Game")
 }
 
