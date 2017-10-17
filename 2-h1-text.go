@@ -1,6 +1,6 @@
 // Problem set - web application.
-// Problem 1 - Guessing Game
-// kevin barry 12-10-17
+// Problem 2 - Make a text H1
+// kevin barry 17-10-17
 // https://data-representation.github.io/problems/go-web-applications.html
 
 package main
@@ -15,8 +15,8 @@ func requestHandler(w http.ResponseWriter, r *http.Request) {
 
 
 	w.Header().Set("Content-Type","text/html");// allows browser to render html tags
-http.
-	fmt.Fprintln(w, "Guessing Game")
+
+	fmt.Fprintln(w, "<h1>Guessing Game</h1>")
 }
 
 func main() {
