@@ -6,17 +6,15 @@
 package main
 
 import (
-	"fmt"
+	//"fmt"
 	"net/http"
 //	"bytes"
 )
 
 func requestHandler(w http.ResponseWriter, r *http.Request) {
 
-
-	w.Header().Set("Content-Type","text/html");// allows browser to render html tags
-
-	fmt.Fprintln(w, "<h1>Guessing Game</h1>")
+//serve a html file instead of hardcoded html
+	http.ServeFile(w, r, "index.html")
 }
 
 func main() {
