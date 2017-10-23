@@ -34,15 +34,17 @@ func guessHandler(w http.ResponseWriter, r *http.Request) {
 	//https://stackoverflow.com/questions/12321133/golang-random-number-generator-how-to-seed-properly
 	rand.Seed(time.Now().UTC().UnixNano())
 
-	target:=0//added to delete undefined issue
+	target:=rand.Intn(20-1)//added to delete undefined issue
 	var cookie, err = r.Cookie("target")//gets cookie called count
 
 	if err == nil{
 		//if we could read it ,try to convert its value to an int
 		target, _ = strconv.Atoi(cookie.Value)
+		/*
 		if target ==0{
 			target = rand.Intn(20-1)
 		}
+		*/
 	}
 	// get url embeded variable , If it has,  inserted into the template where {guess} is replaced with the value of guess.
 	//YourGuess, _ := strconv.Atoi(r.FormValue("guess")
@@ -55,11 +57,11 @@ func guessHandler(w http.ResponseWriter, r *http.Request) {
 	//msg := &myMsg{Message:message, YourGuess: yourGuess}
 	//compare YourGuess to target guess(random number)
 	if yourGuess== target{
-		message ="Correct Guess"
+		message ="Correct Guess "+strconv.Itoa(yourGuess)+" was the answer"
 	}else if yourGuess < target{
-	   message="Try Again guess too low"
+	   message="Try Again your guess  was  too low"
 	}else {
-		message="Try Again guess too high"
+		message="Try Again your guess was too high"
 	 }
 
 
@@ -76,7 +78,7 @@ func guessHandler(w http.ResponseWriter, r *http.Request) {
 	//read the contents of guess.html and return a template
 	t, _ := template.ParseFiles("guess.tmpl")
 	
-	//execute template and pass pointer to myMsg struct
+	//execute template and pass pointer to myMsg 	struct
 	t.Execute(w, &myMsg{Message:message,YourGuess:yourGuess})
 }//guessHandler
 
