@@ -16,11 +16,16 @@
   
   <body>
     <h2>{{.Message}}</h2>
-    
+    {{if .UserGuess}}
+    <p>Your last guess was{{.UserGuess}<\p>
+    {{end}}
     <!-- a form with action redirecting to /guess using http:GET method-->
     <form action="/guess" method="GET">
     <input type="text" name="guess">
     <input type="submit" value="Guess">
+
+ 
+    
     </form>
     
 

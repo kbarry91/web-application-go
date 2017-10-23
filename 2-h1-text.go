@@ -16,7 +16,8 @@ import (
 )
 	
 type myMsg struct {
-    Message string
+	Message string
+	YourGuess int
 }
 
 func requestHandler(w http.ResponseWriter, r *http.Request) {
@@ -43,6 +44,24 @@ func guessHandler(w http.ResponseWriter, r *http.Request) {
 			target = rand.Intn(20-1)
 		}
 	}
+	// get url embeded variable , If it has,  inserted into the template where {guess} is replaced with the value of guess.
+	//YourGuess, _ := strconv.Atoi(r.FormValue("guess")
+//	if YourGuess,_ strconv.Atoi(r.FormValue("guess")
+//			message :="You guessed {{YourGuess}}"
+	
+
+	yourGuess,_ := strconv.Atoi(r.FormValue("guess"))
+
+	//msg := &myMsg{Message:message, YourGuess: yourGuess}
+	//compare YourGuess to target guess(random number)
+	if yourGuess== target{
+		message ="Correct Guess"
+	}else if yourGuess < target{
+	   message="Try Again guess too low"
+	}else {
+		message="Try Again guess too high"
+	 }
+
 
 	//set cookie details at pointer address to &http.cookie
 	cookie = &http.Cookie{
@@ -58,7 +77,7 @@ func guessHandler(w http.ResponseWriter, r *http.Request) {
 	t, _ := template.ParseFiles("guess.tmpl")
 	
 	//execute template and pass pointer to myMsg struct
-	t.Execute(w, &myMsg{Message:message})
+	t.Execute(w, &myMsg{Message:message,YourGuess:yourGuess})
 }//guessHandler
 
 func main() {

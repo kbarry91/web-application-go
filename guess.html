@@ -13,12 +13,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   </head>
   <body>
-    <h2>Guess a number between 1 and 20</h2>
-    <!-- a form with action /guess using GET method-->
+    <h2>Guess a number between 1 and 20!!html!!</h2>
+    <!-- a form with action redirecting to /guess using http:GET method-->
     <form action="/guess" method="GET">
     <input type="text" name="guess">
     <input type="submit" value="Guess">
     </form>
+    <p>{{.message}}</p>
+ 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
