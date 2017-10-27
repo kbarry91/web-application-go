@@ -9,24 +9,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   </head>
-
   
   <body>
-    <p>{{.Message}}</p>
+    <h2>{{.Message}}</h2>
+
     {{if .YourGuess}}
-    <h3>You guessed {{.YourGuess}}</h3>
+      <h3>You guessed {{.YourGuess}}</h3>
     {{end}}
+
     <!-- a form with action redirecting to /guess using http:GET method-->
     <form action="/guess" method="GET">
-    <input type="text" name="guess">
-    <input type="submit" value="Guess">
-    
- 
-    
+      <input type="text" name="guess">
+      <input type="submit" value="Guess">
     </form>
+    
+    <!-- If winner is true display congratulations and a link back for new game-->
      {{if .Winner }}
             <h4>{{.Congrats}}</h4>
             <a href="/">Start New Game</a>
