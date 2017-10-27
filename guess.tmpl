@@ -15,17 +15,22 @@
 
   
   <body>
-    <h2>{{.Message}}</h2>
-    <h4>you guessed {{.YourGuess}}</h4>
+    <p>{{.Message}}</p>
+    {{if .YourGuess}}
+    <h3>You guessed {{.YourGuess}}</h3>
+    {{end}}
     <!-- a form with action redirecting to /guess using http:GET method-->
     <form action="/guess" method="GET">
     <input type="text" name="guess">
     <input type="submit" value="Guess">
-
+    
  
     
     </form>
-    
+     {{if .Winner }}
+            <h4>{{.Congrats}}</h4>
+            <a href="/">Start New Game</a>
+     {{ end }}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

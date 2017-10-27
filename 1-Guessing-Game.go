@@ -2,7 +2,7 @@
 // Problem 1 - Guessing Game
 // kevin barry 12-10-17
 // https://data-representation.github.io/problems/go-web-applications.html
-
+/*
 package main
 
 import (
@@ -23,3 +23,4 @@ func main() {
 	http.HandleFunc("/", requestHandler)
 	http.ListenAndServe(":8080", nil)
 }
+*/
